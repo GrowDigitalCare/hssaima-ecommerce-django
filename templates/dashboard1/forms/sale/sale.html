@@ -1,0 +1,28 @@
+{% extends "dashboard/layouts/layouts.html" %}    
+{% block title %}{{title}} {% endblock %}
+{% block button %} <a type="button" href="{% url 'sale-form' %}" class="btn btn-outline-secondary">Add Sale Items</a>
+{% endblock %}
+
+{% block content %}
+<form action="{% url 'sale-form'%}" method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+<div class="col-md-6">
+  <div class="row">
+    <h3>Choose Products</h3>
+    <select class="form-select" name='products' multiple aria-label="Default select example">
+      {%for product in data.product%}
+        <option value="{{product.slug}}">{{product}}</option>
+        
+      {%endfor%}
+
+      </select>
+    <div class="col">
+      <input type="text" name ="percentage" class="form-control" placeholder="Percentage %">
+    </div>
+    
+    </div>
+  </div>
+    <input type="submit" name="submit">
+  </div>
+</form>
+{% endblock %}

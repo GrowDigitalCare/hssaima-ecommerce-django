@@ -1,0 +1,38 @@
+{% extends "dashboard/layouts/layouts.html" %}    
+{% load staticfiles %}
+{% block title %}{{title}}{% endblock %}
+{% block button %} <a type="button" href="{% url 'blog-form' %}" class="btn btn-outline-secondary">Add Blog</a>{% endblock %}
+{% block content %}
+
+    <div class="container">
+   <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        
+        <th>Title</th>
+        <th>short_description</th>
+        <th>long_description</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for item in data%}
+       <tr>
+        
+        <td>{{item.title}}</td>
+        <td>{{item.short_description}}</td>
+        <td>{{item.long_description}}</td>
+        <td><a class="btn btn-danger" type="submit" href= "{% url 'blog-delete' item.slug %}">Delete</a> | <a class="btn btn-warning" href="{% url 'blog-edit' item.slug %}">Edit</a></td>
+
+
+      </tr>
+    {%endfor%}
+    </tbody>
+  </table>
+      </div>
+    </main>
+  </div>
+</div>
+
+
+{% endblock content %}

@@ -1,0 +1,231 @@
+{% extends "website/layouts/layout.html" %}    
+{% load static %}
+
+{% block content%}
+<div id="page-content">
+    	  <!-- Top banner-->
+    <div class="container-fluid">
+        <div class="row">
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 text-center">
+                            <h1>Size Guide</h1>
+                        </div>
+                    </div>
+                </div>
+
+        </div>
+    </div>
+
+    <div class="container" >
+
+        <style>
+    .size_guide_wrapper .form-all{
+        margin: 0 auto;
+    }
+    .size_guide_wrapper{
+        padding: 10px 15px;
+    }
+    .size_guide_wrapper .form-all img{
+        max-width: 100%;
+    }
+    .size_guide_table th{
+        text-align: center;
+    }
+    .size_guide_table .size_guide_header{
+        background-color: #292b2c;
+        color:#fff;
+    }
+    
+    @media (max-width: 767px){
+        .size_guide_table td{
+            font-size: 13px;
+        }
+        .size_guide_table {white-space:nowrap}
+    }
+    @media  only screen and (max-width: 780px) {
+
+        .size_guide_table::-webkit-scrollbar {
+            -webkit-appearance: none;
+        }
+
+        .size_guide_table::-webkit-scrollbar:vertical {
+            width: 12px;
+        }
+
+        .size_guide_table::-webkit-scrollbar:horizontal {
+            height: 12px;
+        }
+
+        .size_guide_table::-webkit-scrollbar-thumb {
+            background-color: #292b2c;
+            border-radius: 10px;
+            border: 2px solid #ffffff;
+        }
+
+        .size_guide_table::-webkit-scrollbar-track {
+            border-radius: 10px;  
+            background-color: #ffffff; 
+        }
+
+    }
+    .size_converter_switch label{
+        font-weight: bold;
+        font-size: 11px;
+        padding: 2px 7px !important;
+        height: auto;
+        line-height: initial;
+    }
+    /* Switch button */
+    .size_converter_switch .btn-default.btn-on.active{background-color: #292b2c;color: white;}
+    .size_converter_switch .btn-default.btn-on.active.inches{
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+    .btn-default.btn-on.active.centimeter{
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    .size_converter_switch{
+        border: 1px solid #292b2c;
+        margin-bottom: 10px;
+    }
+    .size_converter_switch label{
+        margin-bottom: 0;
+    }
+    .size_converter_switch label:hover{
+        color: inherit;
+    }
+    .size_guide_wrapper p{
+        margin: 0px 0 7px;
+    }
+
+</style>
+<form class="jotform-form form-horizontal size_guide_wrapper" action="#" method="post" name="form_73574681449469" id="73574681449469" accept-charset="utf-8" novalidate="true">
+    <input type="hidden" name="formID" value="73574681449469">
+    <div class="form-all">
+        <div class="form-section page-section">
+            <p>
+                Use the below guideline to determine your best size.
+            </p>
+            <p>
+                Please use the comment box for any additional notes you want to make to the designer.
+            </p>
+            <p>
+                If you are still unsure about what size you are, contact us on  and we would be more
+                than happy to assist.
+            </p>
+            <h5>Women Wear</h5>
+
+            <div class="row switch_size_wrapper">
+                <div class="col-sm-12">
+                    <div class="btn-group size_converter_switch" id="status" data-toggle="buttons">
+                        <input type="hidden" value="inc" class="current_size_type">
+                        <label class="btn btn-default btn-on btn-xs inches active">
+                            <input type="radio" value="inc" name="multifeatured_module[module_id][status]">INCH
+                        </label>
+                        <label class="btn btn-default btn-on btn-xs centimeter">
+                            <input type="radio" value="cen" name="multifeatured_module[module_id][status]" checked="checked">CM
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 table-responsive size_guide_table">
+                    <table class="table table-striped table-bordered table-sm text-center ">
+                        <thead>
+                            <tr class="size_guide_header">
+                                <th colspan="7">ِSize Chart (Travel wear , Kaftan &amp; Dresses)</th>
+                            </tr>
+                            <tr>
+                                <th>Size</th>
+                                <th>UK</th>
+                                <th>US</th>
+                                <th>EU</th>
+                                <th>Chest</th>
+                                <th>Waist</th>
+                                <th>Hips</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>XS</th>
+                                <td>4-6</td>
+                                <td>0-2</td>
+                                <td>32-34</td>
+                                <td><span class="size_number">31</span>-<span class="size_number">32</span></td>
+                                <td><span class="size_number">24</span>-<span class="size_number">25</span></td>
+                                <td><span class="size_number">33</span>-<span class="size_number">34</span></td>
+                            </tr>
+                            <tr>
+                                <th>S</th>
+                                <td>8-10</td>
+                                <td>4-6</td>
+                                <td>36-38</td>
+                                <td><span class="size_number">33</span>-<span class="size_number">35</span></td>
+                                <td><span class="size_number">26</span>-<span class="size_number">28</span></td>
+                                <td><span class="size_number">35</span>-<span class="size_number">37</span></td>
+                            </tr>
+                            <tr>
+                                <th>M</th>
+                                <td>12-14</td>
+                                <td>8-10</td>
+                                <td>40-42</td>
+                                <td><span class="size_number">37</span>-<span class="size_number">39</span></td>
+                                <td><span class="size_number">30</span>-<span class="size_number">31</span></td>
+                                <td><span class="size_number">39</span>-<span class="size_number">41</span></td>
+                            </tr>
+                            <tr>
+                                <th>L</th>
+                                <td>16-18</td>
+                                <td>12-14</td>
+                                <td>44-46</td>
+                                <td><span class="size_number">41</span>-<span class="size_number">43</span></td>
+                                <td><span class="size_number">33</span>-<span class="size_number">36</span></td>
+                                <td><span class="size_number">43</span>-<span class="size_number">46</span></td>
+                            </tr>
+                            <tr>
+                                <th>XL</th>
+                                <td>20-22</td>
+                                <td>16-18</td>
+                                <td>48-50</td>
+                                <td><span class="size_number">46</span>-<span class="size_number">48</span></td>
+                                <td><span class="size_number">39</span>-<span class="size_number">41</span></td>
+                                <td><span class="size_number">49</span>-<span class="size_number">51</span></td>
+                            </tr>
+                            <tr>
+                                <th>XXL</th>
+                                <td>24-26</td>
+                                <td>20-22</td>
+                                <td>52-54</td>
+                                <td><span class="size_number">51</span>-<span class="size_number">54</span></td>
+                                <td><span class="size_number">44</span>-<span class="size_number">47</span></td>
+                                <td><span class="size_number">54</span>-<span class="size_number">57</span></td>
+                            </tr>
+                            <tr>
+                                <th>XXXL</th>
+                                <td>28-30</td>
+                                <td>24-26</td>
+                                <td>56-58</td>
+                                <td><span class="size_number">57</span>-<span class="size_number">59</span></td>
+                                <td><span class="size_number">50</span>-<span class="size_number">52</span></td>
+                                <td><span class="size_number">60</span>-<span class="size_number">62</span></td>
+                            </tr>
+                            <tr>
+                                <th>4XL</th>
+                                <td>32-34</td>
+                                <td>28-30</td>
+                                <td>60-62</td>
+                                <td><span class="size_number">61</span>-<span class="size_number">64</span></td>
+                                <td><span class="size_number">55</span>-<span class="size_number">58</span></td>
+                                <td><span class="size_number">63.5</span>-<span class="size_number">65.5</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+    </div>
+    <!--End Body Content-->
+{% endblock content%}

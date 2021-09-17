@@ -1,0 +1,24 @@
+{% extends "dashboard/layouts/layouts.html" %}    
+{% block title %}{{title}} {% endblock %}
+{% comment %} {% block button %} <a type="button" href="{% url 'category-form' %}" class="btn btn-outline-secondary">Add Product</a> {% endcomment %}
+{% comment %} {% endblock %} {% endcomment %}
+
+{% block content %}
+
+<form action="{% url 'size-form'%}" method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+<div class="col-md-6">
+  <div class="row">
+    <div class="col">
+      {{form.sizes}}
+    </div>
+    <div class="col">
+    {{form.image}}
+    </div>
+  </div>
+  </div>
+    <input type="submit" name="submit">
+</form>
+
+
+{% endblock content %}

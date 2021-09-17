@@ -1,0 +1,452 @@
+{% extends "website/layouts/layout.html" %}    
+{% load static %}
+
+{% block navbar %}
+<li class="lvl1 parent megamenu"><a href="{% url 'home-view'%}">Home <i class="anm anm-angle-down-l"></i></a> 
+
+{% for cat in data.category%}
+
+<li class="lvl1 parent megamenu"><a href="{{cat.get_product_by_category}}">{{cat.title}} <i class="anm anm-angle-down-l"></i></a> 
+{%endfor%}
+
+{% endblock navbar%}
+{% block content%}
+   <!--Body Content-->
+    <div id="page-content">
+    	<!--Home slider-->
+    	<div class="slideshow slideshow-wrapper pb-section">
+        	<div class="home-slideshow">
+            	<div class="slide">
+                	<div class="blur-up lazyload">
+                        <img class="blur-up lazyload" data-src="{% static 'assets-belle/images/slideshow-banners/home2-default-banner1.jpg' %}" src="{% static 'assets-belle/images/slideshow-banners/home2-default-banner1.jpg' %}" alt="Shop Our New Collection" title="Shop Our New Collection" />
+                        <div class="slideshow__text-wrap slideshow__overlay classic middle">
+                            <div class="slideshow__text-content middle">
+                            	<div class="container">
+                                    <div class="wrap-caption right">
+                                        <h2 class="h1 mega-title slideshow__title">Our New Collection</h2>
+                                        <span class="mega-subtitle slideshow__subtitle">Save up to 50% Off</span>
+                                        <span class="btn">Shop now</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide">
+                	<div class="blur-up lazyload">
+                        <img class="blur-up lazyload" data-src="{% static 'assets-belle/images/slideshow-banners/home2-default-banner2.jpg' %}" src="{% static 'assets-belle/images/slideshow-banners/home2-default-banner2.jpg' %}" alt="Summer Bikini Collection" title="Summer Bikini Collection" />
+                        <div class="slideshow__text-wrap slideshow__overlay classic middle">
+                            <div class="slideshow__text-content middle">
+                            	<div class="container">
+                                    <div class="wrap-caption center">
+                                        <h2 class="h1 mega-title slideshow__title">Fashion &amp; Show</h2>
+                                        <span class="mega-subtitle slideshow__subtitle">A World Fashion and Trendy Fashion Clother's</span>
+                                        <span class="btn">Shop now</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End Home slider-->
+
+<!--Category-->
+<div class="container-fluid">
+    <!-- product categories -->
+<div class="row">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="section-header text-center">
+            <h2 class="h2">Category</h2>
+            <p>Grab these new items before they are gone!</p>
+        </div>
+    </div>
+    <div class="prod-category">
+        <div class="container">
+            <div class="row row-eq-height">
+                {% for category in data.category %}
+                <div class="col-lg-4 col-md-4 col-sm-12">
+                            {% comment %} 383 x 229.8 {% endcomment %}
+
+                    <a href="{{ category.get_product_by_category }}"><img src="{{category.image.url}}" style="width:383px;height:229.8px;"  class="img-fluid" alt="Abayas" onerror="this.src='{{category.image.url}}'"/></a>
+                    <a href="{{ category.get_product_by_category }}"><h4 class="text-center my-3">{{category.title}}</h4></a>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--End Category-->
+        {% comment %} ******************************** SLIDDER **************************************** {% endcomment %}
+
+
+ <!--New Arrivals-->
+ <div class="product-rows section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="section-header text-center">
+                    <h2 class="h2">New Arrivals</h2>
+                    <p>Grab these new items before they are gone!</p>
+                </div>
+            </div>
+        </div>
+            {% comment %} {% for product in data.new_arrival %}
+            {{product.get_images_1}}
+            {% endfor %} {% endcomment %}
+        {% comment %} {{data.new_arrival}} {% endcomment %}
+        <div class="grid-products">
+            <div class="row">
+            {% for product in data.new_arrival %}
+                <div class="col-6 col-sm-2 col-md-3 col-lg-3 item">
+                    <!-- start product image -->
+                    <div class="product-image">
+                        <!-- start product image -->
+                        <a href="product-layout-1.html" class="grid-view-item__link">
+                            <!-- image -->
+                            {% if product.get_images_1 %}
+                            <img class="primary blur-up lazyload" style="width:383px;height:229.8px;" data-src="{{product.get_images_1.url}}" src="{{product.get_images_1.url}}" alt="image" title="product">
+                            {% endif %}
+                            <!-- End image -->
+                            <!-- Hover image -->
+                            {% if product.get_images_2 %}
+                            <img class="hover blur-up lazyload" style="width:383px;height:229.8px;" data-src="{{product.get_images_2.url}}" src="{{product.get_images_2.url}}" alt="image" title="product">
+                            {% else %}
+                            <img class="hover blur-up lazyload" style="width:383px;height:229.8px;" data-src="{{product.get_images_1.url}}" src="{{product.get_images_1.url}}" alt="image" title="product">
+                            {% endif %}
+                            <!-- End hover image -->
+                            <!-- Variant Image-->
+                            {% comment %} <img class="grid-view-item__image hover variantImg" src="{% static {{product.get_image_3.url}} %}" alt="image" title="product"> {% endcomment %}
+                            <!-- Variant Image-->
+                            <!-- product label -->
+                            {% if product.sale_price > 0%}
+                            <div class="product-labels rounded"><span class="lbl on-sale">Sale</span> <span class="lbl pr-label1">new</span></div>
+                            {%else%}
+                            <div class="product-labels rounded"><span class="lbl pr-label1">new</span></div>
+
+                            {% endif %}
+                            <!-- End product label -->
+                        </a>
+                        <!-- end product image -->
+                        
+                        <!-- Start product button -->
+                        <form class="variants add" action="#" onclick="window.location.href='cart.html'"method="post">
+                            <button class="btn btn-addto-cart" type="button" tabindex="0">Add To Cart</button>
+                        </form>
+                        <div class="button-set">
+                            {% comment %} <a href="javascript:void(0)" title="Quick View" class="quick-view-popup quick-view" data-toggle="modal" data-target="#content_quickview">
+                                <i class="icon anm anm-search-plus-r"></i>
+                            </a> {% endcomment %}
+                            <div class="wishlist-btn">
+                                <a class="wishlist add-to-wishlist" href="wishlist.html">
+                                    <i class="icon anm anm-heart-l"></i>
+                                </a>
+                            </div>
+                            <div class="compare-btn">
+                                <a class="compare add-to-compare" href="compare.html" title="Add to Compare">
+                                    <i class="icon anm anm-random-r"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <!-- end product button -->
+                    </div>
+                    <!-- end product image -->
+                    <!--start product details -->
+                    <div class="product-details text-center">
+                        <!-- product name -->
+                        <div class="product-name">
+                            <a href="product-layout-1.html">{{product.title}}</a>
+                        </div>
+                        <!-- End product name -->
+                        <!-- product price -->
+                        {% if product.sale_price > 0%}
+                        <div class="product-price">
+                            <span class="old-price">{{product.total}}$</span>
+                            <span class="price">{{product.sale_price}}$</span>
+                        </div>
+                        {% else %}
+                        <div class="product-price">
+                            <span class="price">{{product.total}}$</span>
+                        </div>
+                        {% endif %}
+                        <!-- End product price -->
+                        <!-- Color Variant -->
+                        <!-- End Variant -->
+                    </div>
+                    <!-- End product details -->
+                </div>
+                {% endfor %}
+
+        </div>
+   </div>
+</div>	
+<!--End Featured Product-->
+
+
+        <!--Parallax Section-->
+        <div class="section">
+            <div class="hero hero--large hero__overlay bg-size">
+            	<img class="bg-img" src="{% static 'assets-belle/images/parallax-banners/parallax-banner.jpg' %}" alt="" />
+                <div class="hero__inner">
+                    <div class="container">
+                        <div class="wrap-text left text-small font-bold">
+                            <h2 class="h2 mega-title">Belle <br> The best choice for your store</h2>
+                            <div class="rte-setting mega-subtitle">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</div>
+                            <a href="#" class="btn">Purchase Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End Parallax Section-->
+       
+        {% if data.product_in_demand%}
+        <!--Weekly Bestseller-->
+        <div class="section">
+        	<div class="container">
+            	<div class="row">
+
+                	<div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="section-header text-center">
+                            <h2 class="h2">Product In Demand</h2>
+                            <p>Our most popular products based on sales</p>
+                        </div>
+						<div class="productSlider grid-products">
+                            {% for product in data.product_in_demand%}
+                            <div class="col-12 item">
+                                <!-- start product image -->
+                                <div class="product-image">
+                                    <!-- start product image -->
+                                    <a href="product-layout-1.html" class="grid-view-item__link">
+                                        <!-- image -->
+                                        <img class="primary blur-up lazyload" data-src="{{product.get_images_1.url}}" src="{{product.get_images_1.url}}" alt="image" title="product">
+                                        <!-- End image -->
+                                        <!-- Hover image -->
+                                        <img class="hover blur-up lazyload" data-src="{{product.get_images_2.url}}" src="{{product.get_images_2.url}}" alt="image" title="product">
+                                        <!-- End hover image -->
+                                        <!-- Variant Image-->
+                                        <img class="grid-view-item__image hover variantImg" src="{% static 'assets-belle/images/product-images/product-image1.jpg' %}" alt="image" title="product">
+                                        <!-- Variant Image-->
+                                        <!-- product label -->
+                                        {%if product.sale_price > 0%}
+                                        <div class="product-labels rounded"><span class="lbl on-sale">Sale</span> <span class="lbl pr-label1">new</span></div>
+                                        {% else %}
+                                        <div class="product-labels rounded"><span class="lbl pr-label1">new</span></div>
+                                        {% endif %}
+                                        <!-- End product label -->
+                                    </a>
+                                    <!-- end product image -->
+                                    <!-- Start product button -->
+                                    <form class="variants add" action="#" onclick="window.location.href='cart.html'"method="post">
+                                        <button class="btn btn-addto-cart" type="button" tabindex="0">Add To Cart</button>
+                                    </form>
+                                    <div class="button-set">
+                                        <div class="wishlist-btn">
+                                            <a class="wishlist add-to-wishlist" href="wishlist.html">
+                                                <i class="icon anm anm-heart-l"></i>
+                                            </a>
+                                        </div>
+                                        <div class="compare-btn">
+                                            <a class="compare add-to-compare" href="compare.html" title="Add to Compare">
+                                                <i class="icon anm anm-random-r"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <!-- end product button -->
+                                </div>
+                                <!-- end product image -->
+                                <!--start product details -->
+                                <div class="product-details text-center">
+                                    <!-- product name -->
+                                    <div class="product-name">
+                                        <a href="product-layout-1.html">{{product.title}}</a>
+                                    </div>
+                                    <!-- End product name -->
+                                    <!-- product price -->
+                                    {% if product.sale_price > 0%}
+                                    <div class="product-price">
+                                        <span class="old-price">{{product.total}}$</span>
+                                        <span class="price">{{product.sale_price}}$</span>
+                                    </div>
+                                    {% else %}
+                                    <div class="product-price">
+                                        <span class="price">{{product.total}}$</span>
+                                    </div>                                       
+                                    {% endif %}
+                                    <!-- End product price -->
+                                    <!-- Color Variant -->
+                                    {% comment %} <ul class="swatches">
+                                        <li class="swatch small rounded navy" rel="assets/images/product-images/product-image-stw1.jpg"></li>
+                                        <li class="swatch small rounded green" rel="assets/images/product-images/product-image-stw1-1.jpg"></li>
+                                        <li class="swatch small rounded gray" rel="assets/images/product-images/product-image-stw1-2.jpg"></li>
+                                        <li class="swatch small rounded aqua" rel="assets/images/product-images/product-image-stw1-3.jpg"></li>
+                                        <li class="swatch small rounded orange" rel="assets/images/product-images/product-image-stw1-4.jpg"></li>
+                                    </ul> {% endcomment %}
+                                    <!-- End Variant -->
+                                </div>
+                                <!-- End product details -->
+                            </div>
+                            {%endfor%}
+                                <!-- End product details -->
+                            </div>
+                        </div>
+                    </div>
+            	</div>    
+            </div>
+        </div>
+        <!--Weekly Bestseller-->
+        {%endif%}
+
+ <!--Featured Product-->
+ <div class="product-rows section">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="section-header text-center">
+                    <h2 class="h2">Sale</h2>
+                    <p>Our most popular products based on sales</p>
+                </div>
+            </div>
+        </div>
+        <div class="grid-products">
+            <div class="row">
+            {% for product in data.sale_product %}
+                <div class="col-6 col-sm-6 col-md-4 col-lg-4 item grid-view-item style2">
+                    <div class="grid-view_image">
+                        <!-- start product image -->
+                        <a href="product-accordion.html" class="grid-view-item__link">
+                            <!-- image -->
+                            <img class="grid-view-item__image primary blur-up lazyload" data-src="{{product.get_images_1.url}}" src="{{product.get_images_1.url}}" alt="image" title="product">
+                            <!-- End image -->
+                            <!-- Hover image -->
+                            <img class="grid-view-item__image hover blur-up lazyload" data-src="{{product.get_images_2.url}}" src="{{product.get_images_2.url}}" alt="image" title="product">
+                            <!-- End hover image -->
+                            <!-- product label -->
+                            <div class="product-labels rectangular"><span class="lbl on-sale">{{product.sale_percentage}}%</span> <span class="lbl pr-label1">new</span></div>
+                            <!-- End product label -->
+                        </a>
+                        <!-- end product image -->
+                        <!--start product details -->
+                        <div class="product-details hoverDetails text-center mobile">
+                            <!-- product name -->
+                            <div class="product-name">
+                                <a href="product-accordion.html">{{product.title}}</a>
+                            </div>
+                            <!-- End product name -->
+                            <!-- product price -->
+
+                            <div class="product-price">
+                                <span class="old-price">{{product.total}}$</span>
+                                <span class="price">{{product.sale_price}}$</span>
+                            </div>
+                            <!-- End product price -->
+                            
+                            <!-- product button -->
+                            <div class="button-set">
+                                <!-- Start product button -->
+                                <form class="variants add" action="#" onclick="window.location.href='cart.html'"method="post">
+                                    <button class="btn cartIcon btn-addto-cart" type="button" tabindex="0"><i class="icon anm anm-bag-l"></i></button>
+                                </form>
+                                <div class="wishlist-btn">
+                                    <a class="wishlist add-to-wishlist" href="wishlist.html">
+                                        <i class="icon anm anm-heart-l"></i>
+                                    </a>
+                                </div>
+                                <div class="compare-btn">
+                                    <a class="compare add-to-compare" href="compare.html" title="Add to Compare">
+                                        <i class="icon anm anm-random-r"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <!-- end product button -->
+                        </div>
+                        <!-- Variant -->
+                        {% comment %} <ul class="swatches text-center">
+                        {% for image in product.get_images %}
+                            <li class="swatch medium rounded"><img src="{{image.url}}" alt="image" /></li>
+                        {% endfor %}
+                        </ul> {% endcomment %}
+                        <!-- End Variant -->
+                        <!-- End product details -->
+                    </div>
+                </div>
+                {% endfor %}
+                
+                
+                
+                
+                
+                        <!-- End product details -->
+                    </div>
+                </div>
+            </div>
+        </div>
+   </div>
+</div>	
+<!--End Featured Product-->
+
+
+
+
+         <!--Latest Blog-->
+         <div class="latest-blog section pt-0">
+        	<div class="container">
+            	<div class="row">
+                	<div class="col-12 col-sm-12 col-md-12 col-lg-12">
+        				<div class="section-header text-center">
+      						<h2 class="h2">Latest From our Blog</h2>
+					    </div>
+            		</div>
+                </div>
+            	<div class="row">
+                	<div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                    	<div class="wrap-blog">
+                        	<a href="blog-left-sidebar.html" class="article__grid-image">
+              					<img src="assets/images/blog/post-img1.jpg" alt="It's all about how you wear" title="It's all about how you wear" class="blur-up lazyloaded"/>
+				            </a>
+                            <div class="article__grid-meta article__grid-meta--has-image">
+                                <div class="wrap-blog-inner">
+                                    <h2 class="h3 article__title">
+                                      <a href="blog-left-sidebar.html">It's all about how you wear</a>
+                                    </h2>
+                                    <span class="article__date">May 02, 2017</span>
+                                    <div class="rte article__grid-excerpt">
+                                        I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account...
+                                    </div>
+                                    <ul class="list--inline article__meta-buttons">
+                                    	<li><a href="blog-article.html">Read more</a></li>
+                                    </ul>
+                                </div>
+							</div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+                    	<div class="wrap-blog">
+                        	<a href="blog-left-sidebar.html" class="article__grid-image">
+              					<img src="assets/images/blog/post-img2.jpg" alt="27 Days of Spring Fashion Recap" title="27 Days of Spring Fashion Recap" class="blur-up lazyloaded"/>
+				            </a>
+                            <div class="article__grid-meta article__grid-meta--has-image">
+                                <div class="wrap-blog-inner">
+                                    <h2 class="h3 article__title">
+                                      <a href="blog-right-sidebar.html">27 Days of Spring Fashion Recap</a>
+                                    </h2>
+                                    <span class="article__date">May 02, 2017</span>
+                                    <div class="rte article__grid-excerpt">
+                                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab...
+                                    </div>
+                                    <ul class="list--inline article__meta-buttons">
+                                    	<li><a href="blog-article.html">Read more</a></li>
+                                    </ul>
+                                </div>
+							</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--End Latest Blog-->
+
+
+{% endblock content%}

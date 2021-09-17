@@ -1,0 +1,130 @@
+{% extends "dashboard/layouts/layouts.html" %}    
+{% block title %}{{title}} {% endblock %}
+{% block button %} <a type="button" href="{% url 'product-form' %}" class="btn btn-outline-secondary">Add Product</a>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-8">
+  <form actiion="{% url 'product-form'%}" method="POST" enctype="multipart/form-data">
+{% csrf_token %}
+
+    <div class="form-group">
+      <input type="text" name ="title" class="form-control" placeholder="Title">
+    </div>
+    <div class="form-group">
+      <select class="form-control" name='category' aria-label="Default select example">
+        <option selected>Choose Category</option>
+
+      {%for category in context.category%}
+        <option value="{{category.id}}">{{category}}</option>
+
+
+      {%endfor%}
+      </select>
+    </div>
+    <div class="form-group">
+      {{form.field}}
+      <select class="form-control" name='size' aria-label="Default select example">
+        <option selected>Choose Size</option>
+        {{form.field}}
+      {%for size in context.size%}
+        <option value="{{size.id}}">{{size}}</option>
+
+
+      {%endfor%}
+      </select>
+    </div>
+
+
+
+    <div class="form-group">
+      <input type="text" name ="short_description" class="form-control" placeholder="Short Description">
+    </div>
+
+
+
+    <div class="form-group">
+        <select class="form-control" name='item_fabric'  aria-label="Default select example">
+        <option selected>Choose Fabric</option>
+
+      {%for fabric in context.item_fabric%}
+        <option value="{{fabric.id}}">{{fabric}}</option>
+      {%endfor%}
+      </select>
+    </div>
+    <div class="form-group">
+     <span class="label label-default">Sheila Included</span>
+        <select class="form-select" name='sheila_included' aria-label="Default select example">
+        {% comment %} <option selected>Belt Included</option> {% endcomment %}
+        <option value="0" selected>False</option>
+        <option value="1" >True</option>
+      </select>
+
+       <span class="label label-default">Belt Included</span>
+        <select class="form-select" name='belt_included' aria-label="Default select example">
+        {% comment %} <option selected>Belt Included</option> {% endcomment %}
+        <option value="0" selected>False</option>
+        <option value="1">True</option>
+      </select>
+        <span class="label label-default">Product In Demand</span>
+        <select class="form-select" name='product_in_demand' aria-label="Default select example">
+        <option value="0" selected>False</option>
+        <option value="1" >True</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+        <select class="form-select" name='garment_care' aria-label="Default select example">
+        <option selected>Choose Garment</option>
+
+      {%for garment in context.garments_care%}
+        <option value="{{garment.id}}">{{garment}}</option>
+      {%endfor%}
+      </select>
+    </div>
+
+
+    <div class="form-group">
+      <input type="text" name ="color" class="form-control" placeholder="Color">
+    </div>
+
+
+
+      <div class="form-group">
+        <input type="text" name ="quantity" class="form-control" placeholder="Quantity">
+      </div>
+    <div class="form-group">
+      <input type="text" name="number_of_days" class="form-control" placeholder="Number of Days">
+  </div>
+
+
+    <div class="form-group">
+    <input type="file" name ="image" class="form-control-file" multiple id="Image">
+    </div>
+
+
+
+    <div class="from-group">
+      <input type="text" name ="tags" class="form-control" placeholder="Tags">
+    </div>
+    <div class="form-group">
+      <input type="text" name="designer_note" class="form-control" placeholder="Designer Note">
+    </div>
+    <div class="form-group">
+      <input type="text" name="total" class="form-control" placeholder="Total">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+
+
+</form>
+  </div>
+
+  <div class="col-md-2"></div>
+
+</div>
+
+
+{% endblock content %}
